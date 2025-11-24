@@ -1,16 +1,6 @@
 pipeline {
     agent any
-
-    stages {
-        stage('w/o Docker') {
-            steps {
-                sh '''
-                    echo "Without Docker"
-                    ls -lart
-                '''
-            }
-        }
-        stage('w/ Docker') {
+        stage('Build') {
             agent {
                 docker {
                     image 'node:18-alpine'
@@ -19,10 +9,12 @@ pipeline {
             }
             steps {
                 sh '''
-                    echo "With Docker"
-                    npm --version
                     ls -lart
-                    touch containerPokedYou.txt
+                    node --version
+                    npm --version
+                    npm ci
+                    npm run build
+                    ls -lart
                 '''
             }
         }
