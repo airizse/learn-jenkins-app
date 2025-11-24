@@ -1,5 +1,6 @@
 pipeline {
     agent any
+
     stages {
         stage('Build') {
             agent {
@@ -17,6 +18,11 @@ pipeline {
                     npm run build
                     ls -lart
                 '''
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'test'
             }
         }
     }
