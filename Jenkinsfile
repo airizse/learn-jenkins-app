@@ -55,8 +55,6 @@ pipeline {
                     echo "deploying to production project $NETLIFY_SITE_ID"
                     node_modules/.bin/netlify status
                     ls -lart
-                    node_modules/.bin/netlify unlink
-                    node_modules/.bin/netlify link --id="$NETLIFY_SITE_ID"
                     node_modules/.bin/netlify deploy --dir=build --auth="$NETLIFY_AUTH_TOKEN" --site="$NETLIFY_SITE_ID"
                 '''
             }
