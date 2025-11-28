@@ -55,7 +55,7 @@ pipeline {
                     echo "deploying to production project $NETLIFY_SITE_ID"
                     node_modules/.bin/netlify status
                     ls -lart
-                    node_modules/.bin/netlify deploy --dir=build --prod
+                    node_modules/.bin/netlify deploy --dir=build --prod --no-build
                 '''
             }
         }
